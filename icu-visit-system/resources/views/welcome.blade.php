@@ -375,20 +375,20 @@
         </div>
         <div class="row g-4">
             @foreach([
-                ['fa-shield-halved','linear-gradient(135deg,#0f2444,#1a73e8)','Admin','Full Control','Manage all users, patients, and visit requests. Access comprehensive analytics and system settings.',['Manage patients & doctors','Approve/reject all requests','System analytics','User management']],
-                ['fa-user-doctor','linear-gradient(135deg,#1565c0,#42a5f5)','Doctor','Clinical Authority','Review assigned patient visit requests, approve meetings, and conduct virtual examinations.',['Patient monitoring','Approve visit requests','Conduct video meetings','Clinical notes']],
-                ['fa-heart','linear-gradient(135deg,#1b5e20,#43a047)','Family','Stay Connected','Request secure visits, join meetings, and stay updated with real-time notifications.',['Book virtual visits','Join secure meetings','Track request status','Receive notifications']],
+                ['icon'=>'fa-shield-halved','gradient'=>'linear-gradient(135deg,#0f2444,#1a73e8)','role'=>'Admin','title'=>'Full Control','desc'=>'Manage all users, patients, and visit requests. Access comprehensive analytics and system settings.','features'=>['Manage patients & doctors','Approve/reject all requests','System analytics','User management']],
+                ['icon'=>'fa-user-doctor','gradient'=>'linear-gradient(135deg,#1565c0,#42a5f5)','role'=>'Doctor','title'=>'Clinical Authority','desc'=>'Review assigned patient visit requests, approve meetings, and conduct virtual examinations.','features'=>['Patient monitoring','Approve visit requests','Conduct video meetings','Clinical notes']],
+                ['icon'=>'fa-heart','gradient'=>'linear-gradient(135deg,#1b5e20,#43a047)','role'=>'Family','title'=>'Stay Connected','desc'=>'Request secure visits, join meetings, and stay updated with real-time notifications.','features'=>['Book virtual visits','Join secure meetings','Track request status','Receive notifications']],
             ] as $role)
             <div class="col-12 col-md-4">
                 <div class="role-card">
-                    <div class="role-card-header" style="background:{{ $role[2] }}">
-                        <i class="fa-solid {{ $role[0] }} fa-2x mb-3 opacity-90"></i>
-                        <div style="font-size:11px;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:1px">{{ $role[3] }}</div>
-                        <h4 style="font-weight:800;margin-bottom:6px">{{ $role[4] }}</h4>
-                        <p style="font-size:13px;opacity:.8;margin:0">{{ $role[5] }}</p>
+                    <div class="role-card-header" style="background:{{ $role['gradient'] }}">
+                        <i class="fa-solid {{ $role['icon'] }} fa-2x mb-3 opacity-90"></i>
+                        <div style="font-size:11px;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:1px">{{ $role['role'] }}</div>
+                        <h4 style="font-weight:800;margin-bottom:6px">{{ $role['title'] }}</h4>
+                        <p style="font-size:13px;opacity:.8;margin:0">{{ $role['desc'] }}</p>
                     </div>
                     <div class="role-card-body">
-                        @foreach($role[6] as $feat)
+                        @foreach($role['features'] as $feat)
                         <div class="d-flex align-items-center gap-2 py-2" style="border-bottom:1px solid rgba(0,0,0,.06);font-size:13.5px">
                             <i class="fa-solid fa-check-circle text-success"></i>
                             {{ $feat }}
