@@ -497,14 +497,16 @@
         .notif-item.unread { background: rgba(26,115,232,.04); border-left: 3px solid var(--primary); }
 
         /* ── Status Pills ─────────────────────────────────────── */
-        .status-pending   { background: #fff8e1; color: #f57f17; }
-        .status-approved  { background: #e8f5e9; color: #2e7d32; }
-        .status-rejected  { background: #ffebee; color: #c62828; }
-        .status-completed { background: #e3f2fd; color: #1565c0; }
-        .status-active    { background: #e3f2fd; color: #1565c0; }
-        .status-critical  { background: #ffebee; color: #c62828; }
-        .status-stable    { background: #e8f5e9; color: #2e7d32; }
-        .status-discharged{ background: #f3e5f5; color: #6a1b9a; }
+        .status-pending    { background: #fff8e1; color: #f57f17; }
+        .status-approved   { background: #e8f5e9; color: #2e7d32; }
+        .status-rejected   { background: #ffebee; color: #c62828; }
+        .status-completed  { background: #e3f2fd; color: #1565c0; }
+        .status-cancelled  { background: #f3f4f6; color: #6b7280; }
+        .status-scheduled  { background: #e8f0fe; color: #1a73e8; }
+        .status-active     { background: #e3f2fd; color: #1565c0; }
+        .status-critical   { background: #ffebee; color: #c62828; }
+        .status-stable     { background: #e8f5e9; color: #2e7d32; }
+        .status-discharged { background: #f3e5f5; color: #6a1b9a; }
 
         /* ── Search box ───────────────────────────────────────── */
         .search-box {

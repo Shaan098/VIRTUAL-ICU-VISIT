@@ -43,9 +43,15 @@ Route::prefix('family')->name('family.')->middleware(['auth', 'role:family'])->g
     Route::get('/dashboard', [FamilyController::class, 'dashboard'])->name('dashboard');
 });
 
-// ── Patients (Admin + Doctor) ─────────────────────────────────────────────────
+// ── Patients ─────────────────────────────────────────────────────────────
+// Admin + Doctor: full CRUD
 Route::resource('patients', PatientController::class)
+    ->except(['index', 'show'])
     ->middleware(['auth', 'role:admin,doctor']);
+
+// All authenticated users: view patients (family needs this to select patient in visit request)
+Route::get('/patients',        [PatientController::class, 'index'])->name('patients.index')->middleware('auth');
+Route::get('/patients/{patient}', [PatientController::class, 'show'])->name('patients.show')->middleware('auth');
 
 // ── Visit Requests ────────────────────────────────────────────────────────────
 Route::middleware('auth')->group(function () {

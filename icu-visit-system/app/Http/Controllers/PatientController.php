@@ -13,8 +13,14 @@ class PatientController extends Controller
     {
         $query = Patient::with('assignedDoctor');
 
+        // Doctors only see their own patients
         if (Auth::user()->isDoctor()) {
             $query->where('assigned_doctor_id', Auth::id());
+        }
+
+        // Family only see active/critical/stable (not discharged) patients
+        if (Auth::user()->isFamily()) {
+            $query->whereIn('status', ['active', 'critical', 'stable']);
         }
 
         if ($request->filled('search')) {
@@ -31,7 +37,7 @@ class PatientController extends Controller
             $query->where('status', $request->status);
         }
 
-        if ($request->filled('doctor')) {
+        if ($request->filled('doctor') && Auth::user()->isAdmin()) {
             $query->where('assigned_doctor_id', $request->doctor);
         }
 
