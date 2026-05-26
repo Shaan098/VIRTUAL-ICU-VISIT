@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Virtual ICU Visit Management System - Secure, compassionate connections for critical care.">
-    <title>@yield('title', 'Dashboard') — Virtual ICU Visit</title>
+    <meta name="description" content="{{ config('app.name') }} — Secure, compassionate connections for critical care.">
+    <title>@yield('title', 'Dashboard') — {{ config('app.name') }}</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -228,11 +228,26 @@
             border-radius: 2px;
             transition: var(--transition);
         }
+        .dashboard-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+        }
+        .dashboard-site-name {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--primary);
+            line-height: 1.2;
+        }
         .page-title {
             font-size: 16px;
             font-weight: 700;
             color: var(--text);
-            flex: 1;
+            line-height: 1.2;
         }
 
         /* Notification Bell */
@@ -610,8 +625,8 @@
     <a href="{{ route('home') }}" class="sidebar-brand">
         <div class="sidebar-brand-icon"><i class="fa-solid fa-hospital-user"></i></div>
         <div class="sidebar-brand-text">
-            <span class="sidebar-brand-name">Virtual ICU Visit</span>
-            <span class="sidebar-brand-sub">Management System</span>
+            <span class="sidebar-brand-name">{{ config('app.name') }}</span>
+            <span class="sidebar-brand-sub">{{ config('app.tagline') }}</span>
         </div>
     </a>
 
@@ -701,7 +716,10 @@
             <span></span><span></span><span></span>
         </button>
 
-        <h1 class="page-title mb-0">@yield('page-title', 'Dashboard')</h1>
+        <div class="dashboard-heading">
+            <span class="dashboard-site-name">{{ config('app.name') }}</span>
+            <h1 class="page-title mb-0">@yield('page-title', 'Dashboard')</h1>
+        </div>
 
         <div class="d-flex align-items-center gap-2 ms-auto">
 
